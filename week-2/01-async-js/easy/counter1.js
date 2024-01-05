@@ -5,16 +5,24 @@
 
 //did not want to create index.html ..
 
-const readline = require('readline');
+let counter =0;
+let interval;
+function updateCounter(){
+  counter ++;
+  console.log(counter);
+}
+function startCounter(){
+   interval=setInterval(updateCounter,1000);
 
-function clearLine() {
-  readline.clearLine(process.stdout, 0);
-  readline.cursorTo(process.stdout, 0);
+}
+function stopCounter(){
+  if (counter==100){
+    clearInterval(interval);//stop the interval when the counter reaches 100
+
+  }
+  
+
 }
 
-let counter = 0;
-
-setInterval(() => {
-  clearLine();
-  process.stdout.write(String(counter++));
-}, 1000);
+startCounter();
+stopCounter();
